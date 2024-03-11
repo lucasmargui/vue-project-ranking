@@ -20,223 +20,9 @@
           Parâmetros
         </v-btn>
       </v-col>
-      <v-container v-if="showScoreParametros === true">
-        <v-row>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-select
-                  :items="itemspayoff"
-                  dark
-                  v-model="payoff"
-                  label="Payoff"
-                  @change="simulaInvestimento()"
-                ></v-select>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Payoff esperado para atingir pontuação máxima em relação ao
-                    peso Ex: {{ payoff }} => resultado de {{ payoff }} para
-                    1</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-select
-                  :items="itemsgain"
-                  dark
-                  v-model="gain"
-                  label="Gain %"
-                  @change="simulaInvestimento()"
-                ></v-select>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >% de gain esperado para atingir pontuação máxima em relação
-                    ao peso</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-select
-                  :items="itemstrades"
-                  dark
-                  v-model="trades"
-                  label="Trades %"
-                  @change="simulaInvestimento()"
-                ></v-select>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Trades esperados em relação aos dados analisados para
-                    atingir pontuação máxima em relação ao peso. Ex:{{
-                      trades
-                    }}
-                    => {{ trades }}% de trades realizados em relaçao aos dados
-                    retornam pontuaçao máxima</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-select
-                  :items="itemsporcentagem"
-                  dark
-                  v-model="porcentagem"
-                  label="Ganhos em %"
-                  @change="simulaInvestimento()"
-                ></v-select>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Ganhos esperados para atingir pontuação máxima em relação
-                    ao peso. Ex:{{ porcentagem }} => {{ porcentagem }}% ou mais
-                    retornam pontuaçao máxima</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-text-field
-                  dark
-                  v-model="pesopayoff"
-                  label="Peso payoff"
-                  @keyup="simulaInvestimento()"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Peso payoff Ex: {{ pesopayoff }} => {{ pesopayoff * 100 }}%
-                    de peso no cálculo do score</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-text-field
-                  dark
-                  v-model="pesogain"
-                  label="Peso gain"
-                  @keyup="simulaInvestimento()"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Peso gain Ex: {{ pesogain }} => {{ pesogain * 100 }}% de
-                    peso no cálculo do score</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-text-field
-                  dark
-                  v-model="pesotrades"
-                  label="Peso trades"
-                  @keyup="simulaInvestimento()"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Peso trades Ex: {{ pesotrades }} => {{ pesotrades * 100 }}%
-                    de peso no cálculo do score</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-text-field
-                  dark
-                  v-model="pesoporcentagem"
-                  label="Peso ganhos"
-                  @keyup="simulaInvestimento()"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on" dark>
-                      <v-icon>mdi-pencil</v-icon>
-                    </v-btn>
-                  </template>
-                  <span
-                    >Peso ganhos Ex: {{ pesoporcentagem }} =>
-                    {{ pesoporcentagem * 100 }}% de peso no cálculo do
-                    score</span
-                  >
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
+      
+      <FiltroComponent v-if="showScoreParametros === true" />
+
       <v-col cols="12">
         <v-data-table
           height="400px"
@@ -308,103 +94,20 @@
 <script>
 
 // import fb from '../firebase.js'
-
+import fb from '../firebase.js'
 import { defineComponent } from 'vue';
 
+import data  from '../repositories/repositories.js';
+
+import FiltroComponent from './FiltroComponent.vue';
 
 export default defineComponent({
+  components: { FiltroComponent },
   name: 'HomeView',
   data(){
         return {           
             search: '',
             showScoreParametros:false,
-            payoff: 3.0,
-            trades: 20.0,
-            porcentagem: 300,
-            gain: 100,
-            itemspayoff: [
-              1.0,
-              2.0,
-              3.0,
-              4.0,
-              5.0,
-              6.0,
-              7.0,
-              8.0,
-              10.0, 
-              
-            ],
-             itemsgain: [
-              10,
-              20,
-              30,
-              40,
-              50,
-              60,
-              70,
-              80,
-              90,
-              100
-              ,
-            ],
-            itemstrades: [
-              5.0,
-              10.0,
-              15.0,
-              20.0,
-              25.0,
-              30.0,
-              35.0,
-              40.0,
-              50.0,
-              60.0,
-              70.0,
-              80.0,
-              90.0
-            ],
-            itemsporcentagem: [
-              100.00,
-              200.00,
-              300.00,
-              400.00,
-              500.00,
-              600.00,
-              700.00,
-              800.00,
-              900.00,
-              1000.00,
-              1500.00,
-              2000.00,
-              2500.00,
-              3000.00,
-              3500.00,
-              4000.00,
-              5000.00,
-              6000.00,
-              7000.00
-
-            ],
-
-
-            pesopayoff: 0.40,
-            pesogain: 0.30,
-            pesotrades: 0.15,
-            pesoporcentagem: 0.15,
-            investimento: 1000.00,
-            header:[
-              {text:'',value:'src'},
-              {text:'Ação',value:'name'},
-              {text:'Gain %',value:'gainporcentagem'},
-              {text:'Loss %',value:'lossporcentagem'},
-              {text:'Qtd Gain',value:'qtdgain'},
-              {text:'Qtd Loss',value:'qtdloss'},
-              {text:'Payoff',value:'payoff'},
-              {text:'Ganhos %',value:'profitporcentagem'},
-              {text:'Profit R$',value:'profit'},
-              {text:'Nome',value:'nickname'},
-              {text:'Condicão',value:'condicao'},
-              {text:'Score',value:'score'},
-            ],
             item:[]
         }
     },
@@ -780,36 +483,44 @@ export default defineComponent({
       },
 
     async mounted() {
-      // const backtest = await fb.backtestCollection.get();
-      // let list = [];
-      // backtest.forEach(doc => {
 
-      //   let data = doc.data();
-      //   data.estatistica.id = doc.id;
-      //   data.estatistica.src = 'BOV_' + data.name +'.png'
-      //   data.estatistica.name = data.name
-      //   data.estatistica.gainporcentagem = ((data.estatistica.qtdgain / data.estatistica.total)*100).toFixed(2);
-      //   data.estatistica.lossporcentagem = ((data.estatistica.qtdloss / data.estatistica.total)*100).toFixed(2);
-      //   data.estatistica.profit =  (this.investimento * (data.estatistica.profitporcentagem / 100).toFixed(2)) + this.investimento;  
-      //   data.estatistica.profitporcentagem = (data.estatistica.profitporcentagem).toFixed(2);
+    //   const docSnap = await fb.getDocs(fb.datacollection);
+    //   let list = [];
+    //   docSnap.forEach(doc => {
+    //     let data = doc.data();
+    //     data.estatistica.id = doc.id;
+    //     data.estatistica.src = 'BOV_' + data.name +'.png'
+    //     data.estatistica.name = data.name
+    //     data.estatistica.gainporcentagem = ((data.estatistica.qtdgain / data.estatistica.total)*100).toFixed(2);
+    //     data.estatistica.lossporcentagem = ((data.estatistica.qtdloss / data.estatistica.total)*100).toFixed(2);
+    //     data.estatistica.profit =  (this.investimento * (data.estatistica.profitporcentagem / 100).toFixed(2)) + this.investimento;  
+    //     data.estatistica.profitporcentagem = (data.estatistica.profitporcentagem).toFixed(2);
+    //     data.estatistica.score = this.calculoScore(data.estatistica); 
 
-      //   data.estatistica.score = this.calculoScore(data.estatistica); 
+    //     let buysignals = this.getSinals(data.buysignals,'e');
+    //     let sellsignals = this.getSinals(data.sellsignals,'e');
 
-      //   let buysignals = this.getSinals(data.buysignals,'e');
-      //   let sellsignals = this.getSinals(data.sellsignals,'e');
-
-      //   data.estatistica.condicao = "SINAL DE COMPRA:"+buysignals+"SINAL DE VENDA:"+sellsignals;
+    //     data.estatistica.condicao = "SINAL DE COMPRA:"+buysignals+"SINAL DE VENDA:"+sellsignals;
         
-      //   list.push(data.estatistica);
-      //   // console.log(doc.id, '=>', doc.data());
-      // });
+    //     list.push(data.estatistica);
+    //    console.log(doc.id, '=>', doc.data());
+    //   });
+    //   this.item = list;
+    // 
 
-      // this.item = list;
+    this.item = data;
     
-
+    
     },
 
-});
+
+
+  
+
+}
+
+
+);
 
 
 
@@ -818,18 +529,17 @@ export default defineComponent({
 </script>
 
 <style>
+
+
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
- 
 
   margin: auto;
 }
-
-
 
 h1 {
   text-align: center;
