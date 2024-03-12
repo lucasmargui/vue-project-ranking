@@ -1,118 +1,95 @@
 <template>
-  <v-container class="white--text white--darken-2">
-    <v-row class="text-center" justify="center">
-      <v-col cols="12">
-        <h1>Ranking Estratégias</h1>
-      </v-col>
-      <v-col cols="4">
+  <v-col cols="12">
+    <v-data-table
+      height="400px"
+      dark
+      :headers="header"
+      :items="dataSnapshot"
+      :item-key="dataSnapshot.id"
+      class="elevation-1"
+      :search="search"
+      :custom-filter="filterOnlyCapsText"
+    >
+
+       <template v-slot:top>
         <v-text-field
-          dark
-          label="Total Investimento"
-          @keyup="simulaInvestimento()"
-          prefix="R$"
-          v-model="investimento"
-          color="white"
+          append-icon="mdi-magnify"
+          v-model="search"
+          label="Procurar "
+          class="mx-4"
         ></v-text-field>
-      </v-col>
-      <v-col cols="6">
-        <v-btn tile color="primary" @click="toogleParametrosScore()">
-          <v-icon left> mdi-pencil </v-icon>
-          Parâmetros
-        </v-btn>
-      </v-col>
-      
-      <FiltroComponent v-if="showScoreParametros === true" />
+      </template>
+      <template v-slot:[`item.src`]="{ item }">
+        <v-avatar size="60">
+          <img :src="require('../../../assets/images/' + item.src)" alt="John" />
+        </v-avatar>
+      </template>
+      <template v-slot:[`item.gainporcentagem`]="{ item }">
+        <p>
+          {{ item.gainporcentagem + "%" }}
+        </p>
+      </template>
+      <template v-slot:[`item.lossporcentagem`]="{ item }">
+        <p>
+          {{ item.lossporcentagem + "%" }}
+        </p>
+      </template>
 
-      <v-col cols="12">
-        <v-data-table
-          height="400px"
-          dark
-          :headers="header"
-          :items="item"
-          :item-key="item.id"
-          class="elevation-1"
-          :search="search"
-          :custom-filter="filterOnlyCapsText"
-        >
-          <template v-slot:top>
-            <v-text-field
-              append-icon="mdi-magnify"
-              v-model="search"
-              label="Procurar "
-              class="mx-4"
-            ></v-text-field>
-          </template>
-          <template v-slot:[`item.src`]="{ item }">
-            <v-avatar size="60">
-              <img :src="require('../assets/images/' + item.src)" alt="John" />
-            </v-avatar>
-          </template>
-          <template v-slot:[`item.gainporcentagem`]="{ item }">
-            <p>
-              {{ item.gainporcentagem + "%" }}
-            </p>
-          </template>
-          <template v-slot:[`item.lossporcentagem`]="{ item }">
-            <p>
-              {{ item.lossporcentagem + "%" }}
-            </p>
-          </template>
+      <template v-slot:[`item.profit`]="{ item }">
+        <p>
+          {{ "R$ " + item.profit }}
+        </p>
+      </template>
+      <template v-slot:[`item.profitporcentagem`]="{ item }">
+        <p>
+          {{ item.profitporcentagem + "%" }}
+        </p>
+      </template>
 
-          <template v-slot:[`item.profit`]="{ item }">
-            <p>
-              {{ "R$ " + item.profit }}
-            </p>
+      <template v-slot:[`item.condicao`]="{ item }">
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="primary" dark v-bind="attrs" v-on="on">
+              Estratégia
+            </v-btn>
           </template>
-          <template v-slot:[`item.profitporcentagem`]="{ item }">
-            <p>
-              {{ item.profitporcentagem + "%" }}
-            </p>
-          </template>
+          <span>{{ item.condicao }}</span>
+        </v-tooltip>
+      </template>
 
-          <template v-slot:[`item.condicao`]="{ item }">
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn color="primary" dark v-bind="attrs" v-on="on">
-                  Estratégia
-                </v-btn>
-              </template>
-              <span>{{ item.condicao }}</span>
-            </v-tooltip>
-          </template>
+      <template v-slot:[`item.score`]="{ item }">
+        <v-chip :color="getColor(item.score)" dark>
+          {{ item.score }}
+        </v-chip>
+      </template>
 
-          <template v-slot:[`item.score`]="{ item }">
-            <v-chip :color="getColor(item.score)" dark>
-              {{ item.score }}
-            </v-chip>
-          </template>
-        </v-data-table>
-      </v-col>
-    </v-row>
-  </v-container>
+   
+    </v-data-table>
+  </v-col>
 </template>
+
+
 
 <script>
 
-// import fb from '../firebase.js'
-import fb from '../firebase.js'
 import { defineComponent } from 'vue';
-
-import data  from '../repositories/repositories.js';
-
-import FiltroComponent from './FiltroComponent.vue';
+import configfiltro from "../../../constants/config_filtro";
 
 export default defineComponent({
-  components: { FiltroComponent },
-  name: 'HomeView',
-  data(){
-        return {           
-            search: '',
-            showScoreParametros:false,
-            item:[]
-        }
-    },
-  
-      methods: {
+  name: "ListComponent",
+  data() {
+    return {
+      search: "",
+      header: configfiltro.header,
+    };
+  },
+
+  props: {
+    dataSnapshot: Array,
+  },
+
+
+  methods: {
         simulaInvestimento: function () {
          
           let newlist = [];
@@ -121,7 +98,7 @@ export default defineComponent({
             estatistica.score = this.calculoScore(estatistica);
             newlist.push(estatistica);
           });
-          this.item = newlist;
+          this.dataSnapshot = newlist;
         },
 
           filterOnlyCapsText (value, search) {
@@ -130,9 +107,6 @@ export default defineComponent({
               typeof value === 'string' &&
               value.toString().indexOf(search) !== -1
           },
-        toogleParametrosScore(){
-          this.showScoreParametros = !this.showScoreParametros
-        },
         getColor (score) {
             if (score < 50) return 'red'
             else if (score > 50 && score <  65) return 'orange'
@@ -154,14 +128,10 @@ export default defineComponent({
           let relacaotrades = ((10/this.trades) * tradescore)/10;
           let relacaoporcentagem = ((10/this.porcentagem) * porcentagemscore)/10;
           
-          // console.log("relacaopayoff" + relacaopayoff);
-          // console.log("relacaogain" + relacaogain);
-          // console.log("relacaotrades" + relacaotrades);
-          // console.log("relacaoporcentagem" + relacaoporcentagem);
+   
 
           var score = ((relacaopayoff * this.pesopayoff)+(relacaogain * this.pesogain)+(relacaotrades * this.pesotrades)+(relacaoporcentagem * this.pesoporcentagem)) * 100;
 
-          // console.log("Pontuacao foi" + score);
 
           return score.toFixed(2);
 
@@ -481,75 +451,11 @@ export default defineComponent({
           return textsignals;
         }
       },
-
-    async mounted() {
-
-    //   const docSnap = await fb.getDocs(fb.datacollection);
-    //   let list = [];
-    //   docSnap.forEach(doc => {
-    //     let data = doc.data();
-    //     data.estatistica.id = doc.id;
-    //     data.estatistica.src = 'BOV_' + data.name +'.png'
-    //     data.estatistica.name = data.name
-    //     data.estatistica.gainporcentagem = ((data.estatistica.qtdgain / data.estatistica.total)*100).toFixed(2);
-    //     data.estatistica.lossporcentagem = ((data.estatistica.qtdloss / data.estatistica.total)*100).toFixed(2);
-    //     data.estatistica.profit =  (this.investimento * (data.estatistica.profitporcentagem / 100).toFixed(2)) + this.investimento;  
-    //     data.estatistica.profitporcentagem = (data.estatistica.profitporcentagem).toFixed(2);
-    //     data.estatistica.score = this.calculoScore(data.estatistica); 
-
-    //     let buysignals = this.getSinals(data.buysignals,'e');
-    //     let sellsignals = this.getSinals(data.sellsignals,'e');
-
-    //     data.estatistica.condicao = "SINAL DE COMPRA:"+buysignals+"SINAL DE VENDA:"+sellsignals;
-        
-    //     list.push(data.estatistica);
-    //    console.log(doc.id, '=>', doc.data());
-    //   });
-    //   this.item = list;
-    // 
-
-    this.item = data;
-    
-    
-    },
-
-
-
   
-
-}
-
-
-);
-
-
-
-
-
+});
 </script>
 
+
+
 <style>
-
-
-.loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-
-  margin: auto;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 15px;
-  margin-top: 25px;
-}
-
-h3 {
-  text-align: center;
-  margin-bottom: 30px;
-  margin-top: 60px;
-}
 </style>

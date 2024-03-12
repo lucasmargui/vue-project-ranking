@@ -219,7 +219,7 @@
 </template>
 
 <script>
-import configfiltro from "../constants/config_filtro.js";
+import configfiltro from "../../../constants/config_filtro";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
