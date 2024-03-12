@@ -88,20 +88,43 @@ O diretório "repositories" geralmente contém as classes ou módulos responsáv
 
 - HomeView: Em resumo, este código define um componente Vue chamado "HomeView" que renderiza vários componentes personalizados e utiliza o framework Vuetify para o layout e estilo. Ele também inclui lógica para manipular eventos e dados.
 
+Criando a variável dataSnapshot que receberá a coleção de dados de Firebase
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/ed72e669-ff7f-4054-b21b-bb662ed1859b" style="width:90%">
+</div>
+
+
 
 Importando o arquivo de firebase para importar o objeto contendo as duas propriedades datacollections e getDoc para realização da consulta ao Firebase.
 ```
  import fb from "../../firebase.js";
 ```
 
-Utilizando a função fb.getDocs para acessar a instância de database gerada fb.datacollection obtendo uma coleção de dados.
+Utilizando a função fb.getDocs para acessar a instância de database fb.datacollection obtendo uma coleção de dados.
 
 ```
  async mounted() {
     const docSnap = await fb.getDocs(fb.datacollection);
+
 ```
 
+Acessando cada documento de docSnap, modificando suas propriedades e adicionando numa lista modificada.
 
+```
+ let list = [];
+ docSnap.forEach(doc => {
+      let data = doc.data();
+      ....
+      list.push(data.estatistica);
+```
+
+Atribuindo a lista modificada de dados á variável dataSnapshot
+
+```
+this.dataSnapshot = list;
+
+```
 
 
 ## Project setup
