@@ -4,9 +4,9 @@
     <v-text-field
       dark
       label="Total Investimento"
-      @keyup="simulaInvestimento()"
+      @keyup="atualizarValor"
       prefix="R$"
-      v-model="investimento"
+      v-model="valorLocal"
       color="white"
     ></v-text-field>
   </v-col>
@@ -25,15 +25,19 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'InvestimentoComponent',
-  emits: ['toogleParametros'], // Definindo os eventos emitidos
-  methods: {
-    simulaInvestimento() {
-      // Defina sua lógica para simular o investimento aqui
+  emits: ['toogleParametros','simula-investimento'], // Definindo os eventos emitidos
+  methods:{
+    atualizarValor() {
+      this.$emit('simula-investimento', this.valorLocal);
     }
   },
-  data() {
+   props: {
+    valorProp: String
+  },
+ 
+ data() {
     return {
-      investimento: '' // Defina um valor inicial para o investimento se necessário
+      valorLocal: this.valorProp // Defina um valor inicial para o investimento se necessário
     }
   }
 });

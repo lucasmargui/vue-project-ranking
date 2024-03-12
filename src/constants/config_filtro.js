@@ -67,24 +67,24 @@ const pesogain = 0.30;
 const pesotrades = 0.15;
 const pesoporcentagem = 0.15;
 const investimento = 1000.00;
-const header = [
-  {text:'',value:'src'},
-  {text:'Ação',value:'name'},
-  {text:'Gain %',value:'gainporcentagem'},
-  {text:'Loss %',value:'lossporcentagem'},
-  {text:'Qtd Gain',value:'qtdgain'},
-  {text:'Qtd Loss',value:'qtdloss'},
-  {text:'Payoff',value:'payoff'},
-  {text:'Ganhos %',value:'profitporcentagem'},
-  {text:'Profit R$',value:'profit'},
-  {text:'Nome',value:'nickname'},
-  {text:'Condicão',value:'condicao'},
-  {text:'Score',value:'score'},
+const headers = [
+  { title: "Img", key: "src" },
+  { title: "Ação", key: "name" },
+  { title: "Gain %", key: "gainporcentagem" },
+  { title: "Loss %", key: "lossporcentagem" },
+  { title: "Qtd Gain", key: "qtdgain" },
+  { title: "Qtd Loss", key: "qtdloss" },
+  { title: "Payoff", key: "payoff" },
+  { title: "Ganhos %", key: "profitporcentagem" },
+  { title: "Profit R$", key: "profit" },
+  { title: "Nome", key: "nickname" },
+  { title: "Condicão", key: "condicao" },
+  { title: "Score", key: "score" },
 ];
 
-const payoff =  3.0;
+const payoff = 3.0;
 const trades = 20.0;
-const porcentagem =  300;
+const porcentagem = 300;
 const gain = 100;
 
 
@@ -99,7 +99,7 @@ export default {
   pesotrades,
   pesoporcentagem,
   investimento,
-  header,
+  headers,
   payoff,
   trades,
   porcentagem,

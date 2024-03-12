@@ -9,7 +9,7 @@
                   dark
                   v-model="payoff"
                   label="Payoff"
-                  @change="simulaInvestimento()"
+                  @change="$emit('simula-investimento')"
                 ></v-select>
               </v-col>
               <v-col cols="12" md="2">
@@ -36,7 +36,7 @@
                   dark
                   v-model="gain"
                   label="Gain %"
-                  @change="simulaInvestimento()"
+                  @change="$emit('simula-investimento')"
                 ></v-select>
               </v-col>
               <v-col cols="12" md="2">
@@ -62,7 +62,7 @@
                   dark
                   v-model="trades"
                   label="Trades %"
-                  @change="simulaInvestimento()"
+                  @change="$emit('simula-investimento')"
                 ></v-select>
               </v-col>
               <v-col cols="12" md="2">
@@ -92,7 +92,7 @@
                   dark
                   v-model="porcentagem"
                   label="Ganhos em %"
-                  @change="simulaInvestimento()"
+                  @change="$emit('simula-investimento')"
                 ></v-select>
               </v-col>
               <v-col cols="12" md="2">
@@ -120,7 +120,7 @@
                   dark
                   v-model="pesopayoff"
                   label="Peso payoff"
-                  @keyup="simulaInvestimento()"
+                  @keyup="$emit('simula-investimento')"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="2">
@@ -145,7 +145,7 @@
                   dark
                   v-model="pesogain"
                   label="Peso gain"
-                  @keyup="simulaInvestimento()"
+                  @keyup="$emit('simula-investimento')"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="2">
@@ -170,7 +170,7 @@
                   dark
                   v-model="pesotrades"
                   label="Peso trades"
-                  @keyup="simulaInvestimento()"
+                  @keyup="$emit('simula-investimento')"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="2">
@@ -195,7 +195,7 @@
                   dark
                   v-model="pesoporcentagem"
                   label="Peso ganhos"
-                  @keyup="simulaInvestimento()"
+                  @keyup="$emit('simula-investimento')"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="2">
@@ -224,6 +224,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: "FiltroComponent",
+  emits: ['simula-investimento'], // Definindo os eventos emitidos
   data() {
     return {
       payoff: configfiltro.payoff,
@@ -243,9 +244,6 @@ export default defineComponent({
     };
   },
 
-  methods: {
-    simulaInvestimento: function () {},
-  },
 });
 </script>
 
