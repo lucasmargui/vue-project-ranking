@@ -101,12 +101,12 @@ Importando o arquivo de firebase para importar o objeto contendo as duas proprie
  import fb from "../../firebase.js";
 ```
 
-Utilizando a função fb.getDocs para acessar a instância de database fb.datacollection obtendo uma coleção de dados.
+#### function async mounted()
 
+Utilizando a função fb.getDocs para acessar a instância de database fb.datacollection obtendo uma coleção de dados.
 ```
  async mounted() {
     const docSnap = await fb.getDocs(fb.datacollection);
-
 ```
 
 Acessando cada documento de docSnap, modificando suas propriedades e adicionando numa lista modificada.
@@ -123,8 +123,36 @@ Atribuindo a lista modificada de dados á variável dataSnapshot
 
 ```
 this.dataSnapshot = list;
-
 ```
+
+#### function  simulaInvestimento(investimentoModificado)
+
+Função simulaInvestimento para atualizar os valores da coluna "Profit R$"
+```
+ simulaInvestimento(investimentoModificado) {
+```
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/0fbffc57-1901-42eb-b6da-022b7459692c" style="width:90%">
+</div>
+
+
+#### toogleParametrosScore()
+
+Função toogleParametrosScore para exibir os filtros
+```
+ toogleParametrosScore() 
+```
+
+
+
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/9e2dc674-4d37-4caa-9a97-ea614695faf0" style="width:70%">
+</div>
+
+
+
 
 
 ## Project setup
