@@ -143,13 +143,94 @@ Função toogleParametrosScore para exibir os filtros
 ```
  toogleParametrosScore() 
 ```
-
-
-
-
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/9e2dc674-4d37-4caa-9a97-ea614695faf0" style="width:70%">
 </div>
+
+<br>
+
+#### Atualizando Objeto investimentoDefault
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/4be61c9b-ddbc-4f47-84ad-ad5471830530" style="width:70%">
+</div>
+
+Criando o objeto de configuração 
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/ff8ea07b-39ef-4c48-b51c-0244a697ff9a" style="width:50%">
+</div>
+
+Importando o objeto de configuração 
+
+```
+import investimentoOpcoes from "../../constants/config_investimento.js";
+```
+
+Atribuindo o objeto criado como default
+
+```
+investimentoDefault: investimentoOpcoes,
+```
+
+Passando o objeto através de props para os componentes InvestimentoComponent e FiltroComponent
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/139f6b9a-d910-45ff-a5ce-129f9701cfe0" style="width:50%">
+</div>
+
+
+Declarando que está recebendo o valor através de props no componente
+
+```
+ props: {
+    investimentoDefault: Object,
+  },
+```
+
+Declarando variáveis para utilizar como v-model nos campos de texto e select
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/eb4c2a7f-ecab-42dd-810a-a8a7958d4374" style="width:50%">
+</div>
+
+
+Acionando a função ao alterar o valor de v-model
+
+```
+ @keyup="atualizarValor"
+```
+
+Criando um novo objeto investimentoDefault com os novos valores de v-model para retornar para o componente pai
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/fd424f0b-8067-401c-b8d3-2e9db654b75b" style="width:50%">
+</div>
+
+
+Função que permite que um componente filho envie um evento personalizado para seu componente pai com o valor investimentoOpcoes que irá atualizar investimentoDefault no componente pai HomeView
+
+```
+this.$emit("simula-investimento", investimentoOpcoes);
+```
+
+Ao receber o evento personalizado ira acionar simulaInvestimento passando como parametro o objeto investimentoOpcoes como argumento da função
+
+```
+@simula-investimento="simulaInvestimento"
+```
+
+função que recebe como parametro investimentoModificado que é o valor do objeto investimentoOpcoes
+
+```
+simulaInvestimento(investimentoModificado)
+```
+
+Atualiza investimentoDefault
+```
+this.investimentoDefault = investimentoModificado;
+```
+
 
 
 
