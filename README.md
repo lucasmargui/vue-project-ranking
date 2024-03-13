@@ -9,7 +9,7 @@
 
 ## Projeto
 
-Criação do projeto selecionando a configuração Babel e Router
+Criação do projeto selecionando a configuração Babel e Router.
 
 ```
 vue create vue-ranking
@@ -36,14 +36,14 @@ npm i vuefire firebase
 
 ## firebase.js
 
-Acesse o console do projeto criado e acesse a configuração do SDK
+Acesse a interface de linha de comando (CLI) do projeto criado e acesse as configurações do Software Development Kit (SDK).
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/f6b21387-deef-457b-9393-9b9d27873334" style="width:90%">
 </div>
 <br>
 
-Crie o arquivo firebase.js e utilize as configurações geradas no projeto
+Crie o arquivo firebase.js e empregue as configurações geradas no contexto do projeto.
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/6b0e010e-1b56-4fb8-9e34-68cd96ff1049" style="width:90%">
@@ -60,10 +60,10 @@ export default {
   }
 ```
 
-Código que exporta um objeto contendo duas propriedades (datacollection e getDocs) como o valor padrão do módulo atual.
+O código em questão exporta um objeto que contém duas propriedades (datacollection e getDocs) como o valor padrão do módulo atual.
 
-- datacollection : uma instância de database para ser usada como referência
-- geDocs: uma função que faz uma consulta por todos os documentos presentes na instância da database
+- datacollection: representa uma instância de banco de dados que pode ser utilizada como referência.
+- getDocs: é uma função responsável por realizar uma consulta para obter todos os documentos presentes na instância do banco de dados.
 
 
 
@@ -75,7 +75,9 @@ Componente raiz de nível superior que serve como o ponto de entrada principal p
 
 ## constants
 
-- config_filtro.js : Documento que armazena um conjunto de parâmetros empregados no processo de filtragem utilizados no componente FiltroComponent em HomeView
+- config_filtro.js : Arquivo que contém um conjunto de parâmetros utilizados no processo de filtragem.
+- config_headers.js : Arquivo que contém um conjunto de parâmetros utilizados no processo de criação de cabeçalhos para tabela.
+- config_investimento.js : Arquivo que contém um conjunto de parâmetros utilizados no processo de filtragem.
 
 ## repositories
 
@@ -86,30 +88,35 @@ O diretório "repositories" geralmente contém as classes ou módulos responsáv
 
 ### home
 
-- HomeView: Em resumo, este código define um componente Vue chamado "HomeView" que renderiza vários componentes personalizados e utiliza o framework Vuetify para o layout e estilo. Ele também inclui lógica para manipular eventos e dados.
+HomeView: Em resumo, este código define um componente Vue chamado "HomeView" que renderiza vários componentes personalizados e utiliza o framework Vuetify para o layout e estilo. Ele também inclui lógica para manipular eventos e dados.
 
-Criando a variável dataSnapshot que receberá a coleção de dados de Firebase
+- Instanciando a variável dataSnapshot para armazenar a coleção de dados provenientes do Firebase.
+- Declarando a variável showScoreParametros para controlar a exibição ou ocultação dos filtros.
+- Inicializando a variável investimentosDefault, a qual será empregada para efetuar o cálculo na função calculoscore, localizada no utilitário "utils".
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/ed72e669-ff7f-4054-b21b-bb662ed1859b" style="width:90%">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/6b193fb0-4b31-4cb0-935c-c690be054247" style="width:50%">
 </div>
 
 
 
-Importando o arquivo de firebase para importar o objeto contendo as duas propriedades datacollections e getDoc para realização da consulta ao Firebase.
+Importa-se o arquivo do Firebase para obter o objeto que contém duas propriedades, "datacollections" e "getDoc", que serão utilizadas para realizar consultas ao Firebase.
 ```
  import fb from "../../firebase.js";
 ```
 
 #### function async mounted()
 
-Utilizando a função fb.getDocs para acessar a instância de database fb.datacollection obtendo uma coleção de dados.
+<details>
+  <summary>Clique para mostrar detalhes sobre a função </summary>
+
+Utilizando o método fb.getDocs para obter acesso à instância do banco de dados fb.datacollection e recuperar uma coleção de dados.
 ```
  async mounted() {
     const docSnap = await fb.getDocs(fb.datacollection);
 ```
 
-Acessando cada documento de docSnap, modificando suas propriedades e adicionando numa lista modificada.
+Realizando iteração sobre cada documento contido em docSnap, alterando suas propriedades e agregando-os a uma lista modificada.
 
 ```
  let list = [];
@@ -119,27 +126,46 @@ Acessando cada documento de docSnap, modificando suas propriedades e adicionando
       list.push(data.estatistica);
 ```
 
-Atribuindo a lista modificada de dados á variável dataSnapshot
+Associando a lista de dados alterada à variável dataSnapshot.
 
 ```
 this.dataSnapshot = list;
 ```
+<br>
 
-#### function  simulaInvestimento(investimentoModificado)
+</details>
 
-Função simulaInvestimento para atualizar os valores da coluna "Profit R$"
+------------------------------------
+
+#### function simulaInvestimento(investimentoModificado)
+
+<details>
+  <summary>Clique para mostrar detalhes sobre a função </summary>
+
+Função simulaInvestimento para realizar a atualização dos valores na coluna "Profit R$", seguindo as especificações técnicas definidas.
+
 ```
  simulaInvestimento(investimentoModificado) {
 ```
+
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/0fbffc57-1901-42eb-b6da-022b7459692c" style="width:90%">
 </div>
 
+<br>
 
-#### toogleParametrosScore()
+</details>
 
-Função toogleParametrosScore para exibir os filtros
+------------------------------------
+
+#### function toogleParametrosScore()
+
+<details>
+  <summary>Clique para mostrar detalhes sobre a função </summary>
+
+Função toogleParametrosScore para exibir os filtros.
+
 ```
  toogleParametrosScore() 
 ```
@@ -147,27 +173,35 @@ Função toogleParametrosScore para exibir os filtros
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/9e2dc674-4d37-4caa-9a97-ea614695faf0" style="width:70%">
 </div>
 
+
 <br>
 
+</details>
+
+------------------------------------
+
 #### Atualizando Objeto investimentoDefault
+
+<details>
+  <summary>Clique para mostrar detalhes sobre atualizar valores do objeto </summary>
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/4be61c9b-ddbc-4f47-84ad-ad5471830530" style="width:70%">
 </div>
 
-Criando o objeto de configuração 
+Criando o objeto de configuração.
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/ff8ea07b-39ef-4c48-b51c-0244a697ff9a" style="width:50%">
 </div>
 
-Importando o objeto de configuração 
+Importando o objeto de configuração.
 
 ```
 import investimentoOpcoes from "../../constants/config_investimento.js";
 ```
 
-Atribuindo o objeto criado como default
+Atribuindo o objeto criado como default.
 
 ```
 investimentoDefault: investimentoOpcoes,
@@ -180,7 +214,7 @@ Passando o objeto através de props para os componentes InvestimentoComponent e 
 </div>
 
 
-Declarando que está recebendo o valor através de props no componente
+Transmitindo o objeto por meio de propriedades (props) para os componentes InvestimentoComponent e FiltroComponent.
 
 ```
  props: {
@@ -188,51 +222,52 @@ Declarando que está recebendo o valor através de props no componente
   },
 ```
 
-Declarando variáveis para utilizar como v-model nos campos de texto e select
+Definindo variáveis para serem utilizadas como ligação de modelo (v-model) nos campos de entrada de texto e seleção.
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/eb4c2a7f-ecab-42dd-810a-a8a7958d4374" style="width:50%">
 </div>
 
-
-Acionando a função ao alterar o valor de v-model
+Ativando a função quando ocorre a alteração do valor do v-model.
 
 ```
  @keyup="atualizarValor"
 ```
 
-Criando um novo objeto investimentoDefault com os novos valores de v-model para retornar para o componente pai
+Instanciando um novo objeto denominado investimentoDefault com os valores atualizados do modelo-v para serem enviados de volta ao componente pai.
 
 <div align="center">
   <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/fd424f0b-8067-401c-b8d3-2e9db654b75b" style="width:50%">
 </div>
 
 
-Função que permite que um componente filho envie um evento personalizado para seu componente pai com o valor investimentoOpcoes que irá atualizar investimentoDefault no componente pai HomeView
+Implementação de uma função que facilita a comunicação de um componente filho com seu componente pai através do envio de um evento personalizado contendo o valor 'investimentoOpcoes', o qual será utilizado para atualizar a propriedade 'investimentoDefault' no componente pai 'HomeView'.
 
 ```
 this.$emit("simula-investimento", investimentoOpcoes);
 ```
 
-Ao receber o evento personalizado ira acionar simulaInvestimento passando como parametro o objeto investimentoOpcoes como argumento da função
+Quando um evento personalizado é recebido, será acionada a função simulaInvestimento, passando o objeto investimentoOpcoes como argumento.
 
 ```
 @simula-investimento="simulaInvestimento"
 ```
 
-função que recebe como parametro investimentoModificado que é o valor do objeto investimentoOpcoes
+Uma função que recebe como parâmetro o investimentoModificado, o qual representa o valor do objeto investimentoOpcoes.
 
 ```
 simulaInvestimento(investimentoModificado)
 ```
 
-Atualiza investimentoDefault
+Atualiza investimentoDefault.
+
 ```
 this.investimentoDefault = investimentoModificado;
 ```
 
+</details>
 
-
+------------------------------------
 
 
 
