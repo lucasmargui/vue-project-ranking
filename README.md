@@ -271,6 +271,15 @@ this.investimentoDefault = investimentoModificado;
 
 
 
+## Resultado
+
+<div align="center">
+  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/94d197b6-cded-4d68-8416-f6621160f224" style="width:100%">
+</div>
+
+
+
+
 ## Project setup
 ```
 npm install
