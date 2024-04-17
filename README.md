@@ -1,33 +1,39 @@
-<H1 align="center">Projeto Ranking Estratégias</H1>
-<p align="center">🚀 Projeto de criação de projeto utilizando Vue para referências futuras</p>
+<H1 align="center">Ranking Strategies</H1>
+<p align="center">🚀 Project creation using Vue for future references</p>
 
-## Requisitos
+## Requirements
 - Vue
 - Vue Router
 - Vuetify
 
 
-## Projeto
+<div align="center">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/94d197b6-cded-4d68-8416-f6621160f224" style="width:100%">
+</div>
 
-Criação do projeto selecionando a configuração Babel e Router.
+
+
+## Project
+
+Project creation by selecting the Babel and Router configuration.
 
 ```
 vue create vue-ranking
 ```
 
-Adicionando Vuetify 3 ao projeto
+Adding Vuetify 3 to the project
 
 ```
 vue add vuetify
 ```
 
-Adicionando Firebase ao projeto 
+Adding Firebase to the project
 
 ```
 npm add firebase
 ```
 
-Integrando Firebase ao projeto utilizando Vuefire
+Integrating Firebase into the project using Vuefire
 
 ```
 npm i vuefire firebase
@@ -36,17 +42,17 @@ npm i vuefire firebase
 
 ## firebase.js
 
-Acesse a interface de linha de comando (CLI) do projeto criado e acesse as configurações do Software Development Kit (SDK).
+Access the command line interface (CLI) of the created project and access the Software Development Kit (SDK) settings.
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/f6b21387-deef-457b-9393-9b9d27873334" style="width:90%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/f6b21387-deef-457b-9393-9b9d27873334" style="width:90%">
 </div>
 <br>
 
-Crie o arquivo firebase.js e empregue as configurações geradas no contexto do projeto.
+Create the firebase.js file and use the generated configurations in the project context.
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/6b0e010e-1b56-4fb8-9e34-68cd96ff1049" style="width:90%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/6b0e010e-1b56-4fb8-9e34-68cd96ff1049" style="width:90%">
 </div>
 
 <br>
@@ -55,15 +61,15 @@ Crie o arquivo firebase.js e empregue as configurações geradas no contexto do 
 
 ```
 export default {
-    datacollection,
-    getDocs
-  }
+ datacollection,
+ getDocs
+ }
 ```
 
-O código em questão exporta um objeto que contém duas propriedades (datacollection e getDocs) como o valor padrão do módulo atual.
+The code in question exports an object that contains two properties (datacollection and getDocs) as the default value of the current module.
 
-- datacollection: representa uma instância de banco de dados que pode ser utilizada como referência.
-- getDocs: é uma função responsável por realizar uma consulta para obter todos os documentos presentes na instância do banco de dados.
+- datacollection: represents a database instance that can be used as a reference.
+- getDocs: is a function responsible for performing a query to obtain all documents present in the database instance.
 
 
 
@@ -71,36 +77,36 @@ O código em questão exporta um objeto que contém duas propriedades (datacolle
 
 ## App
 
-Componente raiz de nível superior que serve como o ponto de entrada principal para a aplicação Vue. Este arquivo contém a estrutura básica da aplicação Vue e é frequentemente usado para definir a estrutura geral da interface do usuário, incluindo a barra de navegação, layout principal e outros componentes principais
+Top-level root component that serves as the main entry point for the Vue application. This file contains the basic structure of the Vue application and is often used to define the overall structure of the user interface, including the navigation bar, main layout, and other main components.
 
 ## constants
 
-- config_filtro.js : Arquivo que contém um conjunto de parâmetros utilizados no processo de filtragem.
-- config_headers.js : Arquivo que contém um conjunto de parâmetros utilizados no processo de criação de cabeçalhos para tabela.
-- config_investimento.js : Arquivo que contém um conjunto de parâmetros utilizados no processo de filtragem.
+- config_filtro.js: File that contains a set of parameters used in the filtering process.
+- config_headers.js: File that contains a set of parameters used in the process of creating table headers.
+- config_investimento.js: File that contains a set of parameters used in the filtering process.
 
 ## repositories
 
-O diretório "repositories" geralmente contém as classes ou módulos responsáveis por interagir com o banco de dados ou qualquer outra fonte de dados externa. Nessa caso está simulando um conjunto de dados.
+The "repositories" directory generally contains the classes or modules responsible for interacting with the database or any other external data source. In this case, you are simulating a set of data.
 
 
-## views
+##views
 
 ### home
 
-HomeView: Em resumo, este código define um componente Vue chamado "HomeView" que renderiza vários componentes personalizados e utiliza o framework Vuetify para o layout e estilo. Ele também inclui lógica para manipular eventos e dados.
+HomeView: In short, this code defines a Vue component called "HomeView" that renders several custom components and uses the Vuetify framework for layout and styling. It also includes logic for handling events and data.
 
-- Instanciando a variável dataSnapshot para armazenar a coleção de dados provenientes do Firebase.
-- Declarando a variável showScoreParametros para controlar a exibição ou ocultação dos filtros.
-- Inicializando a variável investimentosDefault, a qual será empregada para efetuar o cálculo na função calculoscore, localizada no utilitário "utils".
+- Instantiating the dataSnapshot variable to store the collection of data coming from Firebase.
+- Declaring the showScoreParameters variable to control the display or hiding of filters.
+- Initializing the investmentsDefault variable, which will be used to perform the calculation in the calculationscore function, located in the "utils" utility.
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/6b193fb0-4b31-4cb0-935c-c690be054247" style="width:50%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/6b193fb0-4b31-4cb0-935c-c690be054247" style="width:50%">
 </div>
 
 
 
-Importa-se o arquivo do Firebase para obter o objeto que contém duas propriedades, "datacollections" e "getDoc", que serão utilizadas para realizar consultas ao Firebase.
+The Firebase file is imported to obtain the object that contains two properties, "datacollections" and "getDoc", which will be used to perform Firebase queries.
 ```
  import fb from "../../firebase.js";
 ```
@@ -108,25 +114,25 @@ Importa-se o arquivo do Firebase para obter o objeto que contém duas propriedad
 #### function async mounted()
 
 <details>
-  <summary>Clique para mostrar detalhes sobre a função </summary>
+ <summary>Click to show details about the function </summary>
 
-Utilizando o método fb.getDocs para obter acesso à instância do banco de dados fb.datacollection e recuperar uma coleção de dados.
+Using the fb.getDocs method to gain access to the fb.datacollection database instance and retrieve a collection of data.
 ```
  async mounted() {
-    const docSnap = await fb.getDocs(fb.datacollection);
+ const docSnap = await fb.getDocs(fb.datacollection);
 ```
 
-Realizando iteração sobre cada documento contido em docSnap, alterando suas propriedades e agregando-os a uma lista modificada.
+Iterating over each document contained in docSnap, changing its properties and adding them to a modified list.
 
 ```
  let list = [];
  docSnap.forEach(doc => {
-      let data = doc.data();
-      ....
-      list.push(data.estatistica);
+ let data = doc.data();
+ ....
+ list.push(data.statistica);
 ```
 
-Associando a lista de dados alterada à variável dataSnapshot.
+Associating the changed data list with the dataSnapshot variable.
 
 ```
 this.dataSnapshot = list;
@@ -137,20 +143,20 @@ this.dataSnapshot = list;
 
 ------------------------------------
 
-#### function simulaInvestimento(investimentoModificado)
+#### function simulateInvestment(investmentModified)
 
 <details>
-  <summary>Clique para mostrar detalhes sobre a função </summary>
+ <summary>Click to show details about the function </summary>
 
-Função simulaInvestimento para realizar a atualização dos valores na coluna "Profit R$", seguindo as especificações técnicas definidas.
+SimulateInvestment function to update the values ​​in the "Profit R$" column, following the defined technical specifications.
 
 ```
- simulaInvestimento(investimentoModificado) {
+ simulateInvestment(investmentModified) {
 ```
 
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/0fbffc57-1901-42eb-b6da-022b7459692c" style="width:90%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/0fbffc57-1901-42eb-b6da-022b7459692c" style="width:90%">
 </div>
 
 <br>
@@ -159,18 +165,18 @@ Função simulaInvestimento para realizar a atualização dos valores na coluna 
 
 ------------------------------------
 
-#### function toogleParametrosScore()
+#### function toogleParametersScore()
 
 <details>
-  <summary>Clique para mostrar detalhes sobre a função </summary>
+ <summary>Click to show details about the function </summary>
 
-Função toogleParametrosScore para exibir os filtros.
+ToogleParametrosScore function to display the filters.
 
 ```
- toogleParametrosScore() 
+ toogleParametersScore()
 ```
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/9e2dc674-4d37-4caa-9a97-ea614695faf0" style="width:70%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/9e2dc674-4d37-4caa-9a97-ea614695faf0" style="width:70%">
 </div>
 
 
@@ -180,102 +186,94 @@ Função toogleParametrosScore para exibir os filtros.
 
 ------------------------------------
 
-#### Atualizando Objeto investimentoDefault
+#### Updating InvestmentDefault Object
 
 <details>
-  <summary>Clique para mostrar detalhes sobre atualizar valores do objeto </summary>
+ <summary>Click to show details about updating object values ​​</summary>
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/4be61c9b-ddbc-4f47-84ad-ad5471830530" style="width:70%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/4be61c9b-ddbc-4f47-84ad-ad5471830530" style="width:70%">
 </div>
 
-Criando o objeto de configuração.
+Creating the configuration object.
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/ff8ea07b-39ef-4c48-b51c-0244a697ff9a" style="width:50%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/ff8ea07b-39ef-4c48-b51c-0244a697ff9a" style="width:50%">
 </div>
 
-Importando o objeto de configuração.
+Importing the configuration object.
 
 ```
-import investimentoOpcoes from "../../constants/config_investimento.js";
+import investmentOpcoes from "../../constants/config_investimento.js";
 ```
 
-Atribuindo o objeto criado como default.
+Assigning the created object as default.
 
 ```
-investimentoDefault: investimentoOpcoes,
+investmentDefault: investmentOptions,
 ```
 
-Passando o objeto através de props para os componentes InvestimentoComponent e FiltroComponent
+Passing the object through props to the InvestimentoComponent and FiltroComponent components
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/139f6b9a-d910-45ff-a5ce-129f9701cfe0" style="width:50%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/139f6b9a-d910-45ff-a5ce-129f9701cfe0" style="width:50%">
 </div>
 
 
-Transmitindo o objeto por meio de propriedades (props) para os componentes InvestimentoComponent e FiltroComponent.
+Passing the object through properties (props) to the InvestimentoComponent and FiltroComponent components.
 
 ```
  props: {
-    investimentoDefault: Object,
-  },
+ investmentDefault: Object,
+ },
 ```
 
-Definindo variáveis para serem utilizadas como ligação de modelo (v-model) nos campos de entrada de texto e seleção.
+Defining variables to be used as model binding (v-model) in text input and selection fields.
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/eb4c2a7f-ecab-42dd-810a-a8a7958d4374" style="width:50%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/eb4c2a7f-ecab-42dd-810a-a8a7958d4374" style="width:50%">
 </div>
 
-Ativando a função quando ocorre a alteração do valor do v-model.
+Activating the function when the v-model value changes.
 
 ```
- @keyup="atualizarValor"
+ @keyup="updateValue"
 ```
 
-Instanciando um novo objeto denominado investimentoDefault com os valores atualizados do modelo-v para serem enviados de volta ao componente pai.
+Instantiating a new object called investmentDefault with the updated v-model values ​​to be sent back to the parent component.
 
 <div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/fd424f0b-8067-401c-b8d3-2e9db654b75b" style="width:50%">
+ <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/fd424f0b-8067-401c-b8d3-2e9db654b75b" style="width:50%">
 </div>
 
 
-Implementação de uma função que facilita a comunicação de um componente filho com seu componente pai através do envio de um evento personalizado contendo o valor 'investimentoOpcoes', o qual será utilizado para atualizar a propriedade 'investimentoDefault' no componente pai 'HomeView'.
+Implementation of a function that facilitates communication between a child component and its parent component by sending a custom event containing the value 'investimentoOpcoes', which will be used to update the 'investimentoDefault' property in the parent component 'HomeView'.
 
 ```
-this.$emit("simula-investimento", investimentoOpcoes);
+this.$emit("simulate-investment", investmentOpcoes);
 ```
 
-Quando um evento personalizado é recebido, será acionada a função simulaInvestimento, passando o objeto investimentoOpcoes como argumento.
+When a custom event is received, the simulaInvestimento function will be triggered, passing the investmentOpcoes object as an argument.
 
 ```
 @simula-investimento="simulaInvestimento"
 ```
 
-Uma função que recebe como parâmetro o investimentoModificado, o qual representa o valor do objeto investimentoOpcoes.
+A function that receives the modified investment as a parameter, which represents the value of the investmentOpcoes object.
 
 ```
-simulaInvestimento(investimentoModificado)
+simulateInvestment(investmentModified)
 ```
 
-Atualiza investimentoDefault.
+Updates investmentDefault.
 
 ```
-this.investimentoDefault = investimentoModificado;
+this.investimentoDefault = investmentModified;
 ```
 
 </details>
 
 ------------------------------------
-
-
-
-## Resultado
-
-<div align="center">
-  <img src="https://github.com/lucasmargui/Vue_Projeto_Ranking_Estrategias/assets/157809964/94d197b6-cded-4d68-8416-f6621160f224" style="width:100%">
-</div>
 
 
 
@@ -287,7 +285,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run serves
 ```
 
 ### Compiles and minifies for production
@@ -297,3 +295,5 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
