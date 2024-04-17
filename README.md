@@ -90,7 +90,7 @@ Top-level root component that serves as the main entry point for the Vue applica
 The "repositories" directory generally contains the classes or modules responsible for interacting with the database or any other external data source. In this case, you are simulating a set of data.
 
 
-##views
+## views
 
 ### home
 
