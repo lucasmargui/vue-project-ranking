@@ -1,4 +1,4 @@
-<H1 align="center">Ranking Strategies</H1>
+<H1 align="center">Ranking Strategies + Vuetify</H1>
 <p align="center">🚀 Project creation using Vue for future references</p>
 
 ## Requirements
